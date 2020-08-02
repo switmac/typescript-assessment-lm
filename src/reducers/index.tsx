@@ -1,16 +1,12 @@
 import { AppEvents } from "../events";
 import { IAction } from "../actions";
-import { IAppState } from "../store";
 
 const initialPersonState = {
   name: "",
   age: 0,
 };
 
-export const reducer = (
-  state: any = initialPersonState,
-  action: IAction
-): IAppState => {
+export function reducer<T>(state: T, action: IAction) {
   switch (action.type) {
     case AppEvents.SET_NAME: {
       return { ...state, name: action.payload };
@@ -22,4 +18,4 @@ export const reducer = (
       return { app: { ...initialPersonState } };
     }
   }
-};
+}
